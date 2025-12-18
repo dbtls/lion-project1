@@ -16,7 +16,7 @@ public class TodoCreateRequest {
     String title;
     @NotBlank
     LocalDateTime todoAt;
-    
+
 
     @Size(max = 1000) String detail;
 
