@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: todoList
+  profiles:
+    active: prod
+
+server:
+  port: 8080
