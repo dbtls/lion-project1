@@ -1,14 +1,15 @@
 FROM node:20-alpine
 WORKDIR /app
 
-# 의존성 파일 복사
 COPY package.json package-lock.json ./
 RUN npm install
 
-# 소스 복사
 COPY . .
 
-# Next 빌드
+ARG NEXT_PUBLIC_API_BASE
+ENV NEXT_PUBLIC_API_BASE=$NEXT_PUBLIC_API_BASE
+
+
 RUN npm run build
 
 # 운영 포트
