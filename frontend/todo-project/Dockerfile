@@ -1,18 +1,10 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 WORKDIR /app
-
-ARG VITE_API_BASE
-ENV VITE_API_BASE=$VITE_API_BASE
 
 COPY package*.json ./
 RUN npm install
 COPY . .
+
 RUN npm run build
-
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 4173
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "4173"]

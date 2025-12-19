@@ -9,7 +9,11 @@ services:
       - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    command:
+      [
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci",
+      ]
     restart: unless-stopped
 
   backend:
@@ -25,12 +29,10 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: ${DOCKER_USERNAME}/todolist-frontend:latest
+    build: ./frontend/todo-project
     container_name: todo-frontend
-    depends_on:
-      - backend
     ports:
-      - "80:80"
+      - "80:4173"
     restart: unless-stopped
 
 volumes:
