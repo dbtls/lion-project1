@@ -35,17 +35,8 @@ jobs:
 
       # Frontend
       - name: Build & Push Frontend Image
-        env:
-          EC2_HOST: ${{ secrets.EC2_HOST }}
-          API_BASE: ${{ secrets.NEXT_PUBLIC_API_BASE }}
         run: |
-          if [ -z "$API_BASE" ]; then
-            API_BASE="http://${EC2_HOST}:8080"
-          fi
-          docker build \
-            --build-arg NEXT_PUBLIC_API_BASE="${API_BASE}" \
-            -t ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest \
-            ./frontend/todo-project
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest ./frontend/todo-project
           docker push ${{ secrets.DOCKER_USERNAME }}/todolist-frontend:latest
 
       # EC2 pull & up

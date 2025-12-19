@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import { todoApi } from "../src/api/todoApi";
@@ -79,11 +79,7 @@ export default function Home() {
 
   return (
     <div className="wrap">
-      <Header
-        onRefresh={loadTodos}
-        onDeleteDone={deleteDone}
-        loading={loading}
-      />
+      <Header onDeleteDone={deleteDone} loading={loading} />
 
       {error && <div className="error">오류: {error}</div>}
 
@@ -102,4 +98,3 @@ export default function Home() {
     </div>
   );
 }
-
