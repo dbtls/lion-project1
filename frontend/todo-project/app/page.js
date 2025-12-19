@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import { todoApi } from "./api/todoApi";
-import Header from "./components/Header";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+'use client'
 
-export default function App() {
+import { useEffect, useState } from "react";
+import { todoApi } from "../src/api/todoApi";
+import Header from "../src/components/Header";
+import TodoForm from "../src/components/TodoForm";
+import TodoList from "../src/components/TodoList";
+
+export default function Home() {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState("");
   const [todoAt, setTodoAt] = useState("");
@@ -101,3 +102,4 @@ export default function App() {
     </div>
   );
 }
+
